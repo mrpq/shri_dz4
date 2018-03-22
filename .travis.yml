@@ -1,0 +1,29 @@
+sudo: required
+services:
+- docker
+before_install:
+- docker build -t testapp .
+- docker run -d -p 80:80 testapp
+before_script:
+- npm install
+script:
+- npm run test
+deploy:
+  provider: heroku
+  api_key:
+    secure: HLGrHQPV9lEbeHlHEeilm6BA+KWtNBw5KSN4/1QS7eiehHtTdlqedV7/g+EVZiSLnzVcen7FGYBhpFdxBc8jx+Yh9jtM5qcV0Qw/hz4DWqYV3z7QfDtcJ5cBcPwM4Wi7QeTvDzhUI+eo2qkX1seqYMtgyh/Ey91gwXanbB8aMcjx3/AnLioiTprdJd2FEjF2R2g1W6me3KFmr3PpPRmNWoS94iRjdQrX/ig7ll4Syipp2E2r/vcb5VsU9RyciCl63P7U5SIKW41/0yrPNcaNA8Zf7+bTN+bAht0tEaRDcdr/JFbSy4lGmEYZDIuvIjBWJwXspor+BWcKK/nYKwE/ieSMOQ/WFrQjv5LWSR4Bvo+sunqUFmWLcCsJJlELFC2s1+6GaztusW5XYk6R2haviFZEH7OH1ZdCDKpv+B8JBG0nIAyLOGvXgQ487eYIuJH3+ub8x+TdIevwB3e2F24A18C+gKwOnnAKkCDnnyHt0JPslSGqZe+6boR/AwIxbUs6vusHnWiDTpGMH27R909MpWhuoDDZzL2An41yGFlN0e+U78jvMohPS4oYhCqsyrqdqW9LYUDQbSs12ddhj3RkNA9PCEu6jZ5kuJ4NyrxoH+Ngc7vAcZ5LhLM+g+oaaFBkANhD3wc+ca4P77aww6vwmv9tDgXAVmLV1id81AErK78=
+  app: shri-dz4-staging
+  on:
+    repo: mrpq/shri_dz4
+    all_branches: true
+    tags: false
+deploy:
+  provider: heroku
+  api_key:
+    secure: HLGrHQPV9lEbeHlHEeilm6BA+KWtNBw5KSN4/1QS7eiehHtTdlqedV7/g+EVZiSLnzVcen7FGYBhpFdxBc8jx+Yh9jtM5qcV0Qw/hz4DWqYV3z7QfDtcJ5cBcPwM4Wi7QeTvDzhUI+eo2qkX1seqYMtgyh/Ey91gwXanbB8aMcjx3/AnLioiTprdJd2FEjF2R2g1W6me3KFmr3PpPRmNWoS94iRjdQrX/ig7ll4Syipp2E2r/vcb5VsU9RyciCl63P7U5SIKW41/0yrPNcaNA8Zf7+bTN+bAht0tEaRDcdr/JFbSy4lGmEYZDIuvIjBWJwXspor+BWcKK/nYKwE/ieSMOQ/WFrQjv5LWSR4Bvo+sunqUFmWLcCsJJlELFC2s1+6GaztusW5XYk6R2haviFZEH7OH1ZdCDKpv+B8JBG0nIAyLOGvXgQ487eYIuJH3+ub8x+TdIevwB3e2F24A18C+gKwOnnAKkCDnnyHt0JPslSGqZe+6boR/AwIxbUs6vusHnWiDTpGMH27R909MpWhuoDDZzL2An41yGFlN0e+U78jvMohPS4oYhCqsyrqdqW9LYUDQbSs12ddhj3RkNA9PCEu6jZ5kuJ4NyrxoH+Ngc7vAcZ5LhLM+g+oaaFBkANhD3wc+ca4P77aww6vwmv9tDgXAVmLV1id81AErK78=
+  app: shri-dz4-prod
+  on:
+    repo: mrpq/shri_dz4
+    all_branches: true
+    tags: true
+

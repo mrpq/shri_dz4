@@ -1,0 +1,41 @@
+{
+  "name": "dz4",
+  "version": "1.0.0",
+  "description": "Infra-app-tests",
+  "main": "app.js",
+  "scripts": {
+    "test": "npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mrpq/shri_dz4.git"
+  },
+  "dependencies": {
+    "express": "^4.16.3",
+    "babel-core": "^6.26.0",
+    "babel-jest": "^23.0.0-alpha.0",
+    "babel-preset-env": "^1.6.1",
+    "is-valid-path": "^0.1.1",
+    "regenerator-runtime": "^0.11.1"
+  },
+  "devDependencies": {
+    "eslint": "^4.19.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.9.0",
+    "jest": "^22.4.2"
+  },
+  "keywords": [
+    "docker",
+    "travis",
+    "heroku",
+    "ci",
+    "cd",
+    "node.js"
+  ],
+  "author": "Viktor Voronin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mrpq/shri_dz4/issues"
+  },
+  "homepage": "https://github.com/mrpq/shri_dz4#readme"
+}
