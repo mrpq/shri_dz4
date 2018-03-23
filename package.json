@@ -4,7 +4,7 @@
   "description": "Infra-app-tests",
   "main": "app.js",
   "scripts": {
-    "test": "npm run test"
+    "test": "jest --watch"
   },
   "repository": {
     "type": "git",
@@ -24,14 +24,7 @@
     "eslint-plugin-import": "^2.9.0",
     "jest": "^22.4.2"
   },
-  "keywords": [
-    "docker",
-    "travis",
-    "heroku",
-    "ci",
-    "cd",
-    "node.js"
-  ],
+  "keywords": ["docker", "travis", "heroku", "ci", "cd", "node.js"],
   "author": "Viktor Voronin",
   "license": "ISC",
   "bugs": {
