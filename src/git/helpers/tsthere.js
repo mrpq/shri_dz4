@@ -10,6 +10,7 @@ const promisifiedExec = command => dir =>
     });
   });
 
-promisifiedExec("git log  --format=format:%H___%an___%cI___%s")(".").then((streams) => {
+promisifiedExec("git ls-tree -r -t HEAD")(".").then((streams) => {
   console.log(streams.stdout);
+  console.log("-----");
 });
