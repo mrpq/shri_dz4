@@ -4,6 +4,7 @@
   "description": "Infra-app-tests",
   "main": "app.js",
   "scripts": {
+    "dev": "nodemon src/app.js",
     "test": "jest --watch"
   },
   "repository": {
@@ -17,6 +18,8 @@
     "express": "^4.16.3",
     "is-valid-path": "^0.1.1",
     "moment": "^2.21.0",
+    "morgan": "^1.9.0",
+    "pug": "^2.0.3",
     "regenerator-runtime": "^0.11.1"
   },
   "devDependencies": {
