@@ -1,12 +1,14 @@
-import { parseGitBranchOutput, Branch } from "../branch";
+// import { parseGitBranchOutput, Branch } from "../git/branch.js";
+import { parseGitBranchOutput } from "../branch";
+import { Branch } from "../../models";
 // const parseGitBranchOutput = require("../branch");
 
 const fs = require("fs");
 
-const repoDir = "./testrepo";
+// const repoDir = "./testrepo";
 
 const createBranches = () => {
-  const file = `${process.cwd()}/src/__tests__/git_branch_output.txt`;
+  const file = `${process.cwd()}/src/git/helpers/__tests__/git_branch_output.txt`;
   const data = fs.readFileSync(file, "utf8");
   const branches = parseGitBranchOutput(data);
   return branches;
