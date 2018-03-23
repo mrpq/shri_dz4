@@ -1,5 +1,5 @@
-import { parseGitLstreeOutput } from "../lstree";
-import { GitTree } from "../../models";
+// import { parseGitLstreeOutput } from "../lstree";
+const { parseGitLstreeOutput } = require("../lstree");
 
 const fs = require("fs");
 
@@ -19,7 +19,6 @@ describe("Тестирует parseGitLstreeOutput()", () => {
     const rootDirFiles = findFilesByDir(files, ".");
     const expectedFileList = [".gitignore", "anotherfile.txt", "dir1", "dir2", "somefile.txt"];
     const allFilesPresent = rootDirFiles.every(f => expectedFileList.includes(f.getName()));
-    console.log(findFileByName(files, "innerdir"));
     expect(allFilesPresent).toBe(true);
   });
 });

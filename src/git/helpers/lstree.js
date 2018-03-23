@@ -1,6 +1,5 @@
-import { GitTree } from "../models";
-
 const path = require("path");
+const { GitTree } = require("../models");
 
 const createNode = (line) => {
   const [objType, hash, fullpath] = line.split(/\s+/).slice(1);
@@ -10,14 +9,7 @@ const createNode = (line) => {
   return new GitTree(hash, objType, name, dir, parentName);
 };
 
-const setNodeChildren = (node, allNodes) => {
-  const setNodeParent = (node, parent) => {
-    node.setParent(parent);
-  };
-  node.setChildren(children);
-};
-
-export const parseGitLstreeOutput = (data) => {
+const parseGitLstreeOutput = (data) => {
   const findNodeChildren = (node, allNodes) => {
     const children = allNodes.filter(n => n.getParentName() === node.getName());
     return children;
@@ -40,8 +32,7 @@ export const parseGitLstreeOutput = (data) => {
   return nodes;
 };
 
-const a = 2;
-
-export default a;
-
 // export const getNodeChildren = (data, node) => {};
+module.exports = {
+  parseGitLstreeOutput,
+};

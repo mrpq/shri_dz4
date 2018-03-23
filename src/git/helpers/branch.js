@@ -1,20 +1,10 @@
-import { Branch } from "../models";
-// const fs = require("fs");
-const cp = require("child_process");
+const { Branch } = require("../models");
 
-const promisifiedExec = command => dir =>
-  new Promise((resolve, reject) => {
-    const p = cp.exec(command, { cwd: dir }, (err, stdout, stderr) => {
-      if (err) {
-        reject(err);
-      }
-      resolve({ stdout, stderr });
-    });
-  });
+// const promisifiedExec = require("../../utils/utils.js");
 
-const execGitBranchForDir = promisifiedExec("git branch -v");
+// const execGitBranchForDir = promisifiedExec("git branch -v");
 
-export const createBranchFromTextLine = (line) => {
+const createBranchFromTextLine = (line) => {
   const hasLeadingAsterisk = l => l[0] === "*";
   const splitLine = line.split(" ");
   if (hasLeadingAsterisk(line)) {
@@ -25,17 +15,19 @@ export const createBranchFromTextLine = (line) => {
   return new Branch(shortHash, name, false);
 };
 
-export const parseGitBranchOutput = (data) => {
+const parseGitBranchOutput = (data) => {
   const lines = data.substr(0, data.length - 1).split("\n");
   const branches = lines.map(createBranchFromTextLine);
   return branches;
 };
 
-export const getGitBranchesForDir = dir =>
-  execGitBranchForDir(dir).then((streams) => {
-    const parsedResult = parseGitBranchOutput(streams.stdout);
-    console.log(parsedResult);
-    return parsedResult;
-  });
+// export const getGitBranchesForDir = dir =>
+//   execGitBranchForDir(dir).then((streams) => {
+//     const parsedResult = parseGitBranchOutput(streams.stdout);
+//     console.log(parsedResult);
+//     return parsedResult;
+//   });
 
-export const getRepoBranches = (repoDir) => {};
+module.exports = {
+  parseGitBranchOutput,
+};

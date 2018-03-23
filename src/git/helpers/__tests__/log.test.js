@@ -1,5 +1,5 @@
-import { parseGitLogOutput } from "../log";
-import { Commit } from "../../models";
+const { parseGitLogOutput } = require("../log");
+const { Commit } = require("../../models");
 
 const fs = require("fs");
 const moment = require("moment");
