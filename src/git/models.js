@@ -62,5 +62,30 @@ export class Commit extends GitObject {
     };
   }
 }
+export class GitTree extends GitObject {
+  constructor(hash, parent = null, objType, name, children = null) {
+    super(hash, "tree");
+    this.parent = parent;
+    this.objType = objType;
+    this.name = name;
+    this.children = children;
+  }
+
+  getParent() {
+    return this.parent;
+  }
+
+  getObjType() {
+    return this.objType;
+  }
+
+  getName() {
+    return this.name;
+  }
+
+  getChildren() {
+    return this.children;
+  }
+}
 
 export default GitObject;
