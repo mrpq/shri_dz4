@@ -63,16 +63,30 @@ export class Commit extends GitObject {
   }
 }
 export class GitTree extends GitObject {
-  constructor(hash, parent = null, objType, name, children = null) {
+  constructor(
+    hash,
+    objType,
+    name,
+    dir,
+    parentName,
+    parent = null,
+    children = objType === "tree" ? [] : null,
+  ) {
     super(hash, "tree");
+    this.parentName = parentName;
     this.parent = parent;
     this.objType = objType;
     this.name = name;
+    this.dir = dir;
     this.children = children;
   }
 
   getParent() {
     return this.parent;
+  }
+
+  getParentName() {
+    return this.parentName;
   }
 
   getObjType() {
@@ -83,8 +97,20 @@ export class GitTree extends GitObject {
     return this.name;
   }
 
+  getDir() {
+    return this.dir;
+  }
+
   getChildren() {
     return this.children;
+  }
+
+  setChildren(children) {
+    this.children = children;
+  }
+
+  setParent(parent) {
+    this.parent = parent;
   }
 }
 

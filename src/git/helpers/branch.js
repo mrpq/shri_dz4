@@ -26,7 +26,7 @@ export const createBranchFromTextLine = (line) => {
 };
 
 export const parseGitBranchOutput = (data) => {
-  const lines = data.substr(0, data.length - 2).split("\n");
+  const lines = data.substr(0, data.length - 1).split("\n");
   const branches = lines.map(createBranchFromTextLine);
   return branches;
 };
