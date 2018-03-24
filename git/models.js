@@ -67,11 +67,11 @@ class Commit extends GitObject {
 
   getFullInfo() {
     return {
-      hash: this.getHash(),
-      type: this.getType(),
-      time: this.getTime(),
-      subject: this.getSubject(),
-      body: this.getBody(),
+      hash: this.hash,
+      type: this.type,
+      time: this.time,
+      subject: this.subject,
+      body: this.body,
     };
   }
 }

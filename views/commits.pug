@@ -3,8 +3,8 @@ html
   +head({title})
   body
     include ./blocks/heading.pug
-    include ./blocks/branchList.pug
+    include ./blocks/commitList.pug
     +heading()
-    h2 Список веток
-    +branchList(branches, repo)
+    h2 Commit history
+    +commitList(repo, branch, commits)
   
