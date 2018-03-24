@@ -1,0 +1,6 @@
+mixin repos(repos)
+  .repos
+    ul.repos__list
+      each repo in repos
+        li.repos__item
+          a.repos__link(href= `/${repo.name}:`)= repo.name
