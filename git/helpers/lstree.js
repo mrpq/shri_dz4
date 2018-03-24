@@ -35,8 +35,9 @@ const parseGitLstreeOutput = (data) => {
 };
 
 const getFs = (repoDir, hash) =>
-  promisifiedExec(`git ls-tree -t ${hash}`)(repoDir).then((streams) => {
+  promisifiedExec(`git ls-tree -t -r ${hash}`)(repoDir).then((streams) => {
     const res = parseGitLstreeOutput(streams.stdout);
+    console.log(res);
     return res;
   });
 

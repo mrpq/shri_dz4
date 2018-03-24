@@ -13,6 +13,6 @@ html
       li.breadcrumb__item
         a.breadcrumb__link(href=`/commits/${repo}/${branchHash}`)= `Branch: ${branchName} (${branchHash})`
       li.breadcrumb__item
-        .breadcrumb__link= `Commit: ${commitHash})`
+        a.breadcrumb__link(href=`/files/${repo}/${branchHash}/${commitHash}`)= `Commit: ${commitHash})`
     h2 Список файлов
     +file(content, repo, branch)

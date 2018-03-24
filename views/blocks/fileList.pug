@@ -9,7 +9,7 @@ mixin fileList(files, repo, branch)
               a.file__link(href=`/files/${repo}/${branchHash}/${file.hash}`)= file.name
               .file__type dir
             else
-              a.file__link(href=`/file/${repo}/${file.hash}`)= file.name
+              a.file__link(href=`/file/${repo}/${branchHash}/${commitHash}/${file.hash}`)= file.name
               .file__type file
             .file__hash= file.hash
             
