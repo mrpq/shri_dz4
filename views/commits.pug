@@ -5,6 +5,13 @@ html
     include ./blocks/heading.pug
     include ./blocks/commitList.pug
     +heading()
+    ul.breadcrumb
+      li.breadcrumb__item
+        a.breadcrumb__link(href='/') Home
+      li.breadcrumb__item
+        a.breadcrumb__link(href=`/branches/${repo}`)= `Repo: ${repo}`
+      li.breadcrumb__item
+        a.breadcrumb__link= `Branch: ${branchName} (${branchHash})`
     h2 Commit history
-    +commitList(repo, branch, commits)
+    +commitList(repo, branchHash, commits)
   

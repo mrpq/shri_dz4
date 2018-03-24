@@ -5,5 +5,14 @@ html
     include ./blocks/heading.pug
     include ./blocks/file.pug
     +heading()
+    ul.breadcrumb
+      li.breadcrumb__item
+        a.breadcrumb__link(href='/') Home
+      li.breadcrumb__item
+        a.breadcrumb__link(href=`/branches/${repo}`)= `Repo: ${repo}`
+      li.breadcrumb__item
+        a.breadcrumb__link(href=`/commits/${repo}/${branchHash}`)= `Branch: ${branchName} (${branchHash})`
+      li.breadcrumb__item
+        .breadcrumb__link= `Commit: ${commitHash})`
     h2 Список файлов
     +file(content, repo, branch)

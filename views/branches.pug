@@ -5,6 +5,11 @@ html
     include ./blocks/heading.pug
     include ./blocks/branchList.pug
     +heading()
+    ul.breadcrumb
+      li.breadcrumb__item
+        a.breadcrumb__link(href='/') Home
+      li.breadcrumb__item
+        .breadcrumb__link= `Repo: ${repo}`
     h2 Список веток
     +branchList(branches, repo)
   

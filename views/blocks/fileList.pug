@@ -6,7 +6,7 @@ mixin fileList(files, repo, branch)
         li.files__item.file
           .file__name
             if file.objType === 'tree'
-              a.file__link(href=`/files/${repo}/${branch}/${file.hash}`)= file.name
+              a.file__link(href=`/files/${repo}/${branchHash}/${file.hash}`)= file.name
               .file__type dir
             else
               a.file__link(href=`/file/${repo}/${file.hash}`)= file.name
