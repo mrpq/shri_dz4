@@ -10,7 +10,7 @@ const getRepoDir = repo => path.join(getAppRoot(), process.env.REPOS_DIR, repo);
 /* GET home page. */
 router.get("/:repo", (req, res, next) => {
   const repoDir = getRepoDir(req.params.repo);
-  getRepoBranches().then((branches) => {
+  getRepoBranches(repoDir).then((branches) => {
     res.render("branches", { repo: req.params.repo, branches: branches.map(b => b.getFullInfo()) });
   });
 });
