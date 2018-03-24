@@ -1,1 +1,0 @@
-dir1_file.txt content
