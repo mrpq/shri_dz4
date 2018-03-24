@@ -1,6 +1,8 @@
 const path = require("path");
 const { GitTree } = require("../models");
 
+const { promisifiedExec } = require("../../utils/utils.js");
+
 const createNode = (line) => {
   const [objType, hash, fullpath] = line.split(/\s+/).slice(1);
   const dir = path.dirname(fullpath);
@@ -32,7 +34,14 @@ const parseGitLstreeOutput = (data) => {
   return nodes;
 };
 
+const getFs = (repoDir, hash) =>
+  promisifiedExec(`git ls-tree -t ${hash}`)(repoDir).then((streams) => {
+    const res = parseGitLstreeOutput(streams.stdout);
+    return res;
+  });
+
 // export const getNodeChildren = (data, node) => {};
 module.exports = {
   parseGitLstreeOutput,
+  getFs,
 };

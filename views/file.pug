@@ -1,0 +1,9 @@
+html
+  include ./blocks/head.pug
+  +head({title})
+  body
+    include ./blocks/heading.pug
+    include ./blocks/file.pug
+    +heading()
+    h2 Список файлов
+    +file(content, repo, branch)

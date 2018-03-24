@@ -16,10 +16,13 @@ const parseGitLogOutput = (data) => {
   return logEntries;
 };
 
-const getBranchLog = (repoDir, hash) => promisifiedExec(`git log ${hash} --format=format:%H___%an___%cI___%s`)(repoDir).then((streams) => {
-  const data = streams.stdout;
-  return parseGitLogOutput(data);
-});
+const getBranchLog = (repoDir, hash) => {
+  const p = promisifiedExec(`git log ${hash} --format=format:%H___%an___%cI___%s`)(repoDir);
+  return p.then((streams) => {
+    const data = streams.stdout;
+    return parseGitLogOutput(data);
+  });
+};
 
 module.exports = {
   parseGitLogOutput,

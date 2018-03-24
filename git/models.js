@@ -125,6 +125,19 @@ class GitTree extends GitObject {
   setParent(parent) {
     this.parent = parent;
   }
+
+  getFullInfo() {
+    return {
+      hash: this.hash,
+      type: this.type,
+      parentName: this.parentName,
+      parent: this.parent,
+      objType: this.objType,
+      name: this.name,
+      dir: this.dir,
+      children: this.children,
+    };
+  }
 }
 
 module.exports = {
