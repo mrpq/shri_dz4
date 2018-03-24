@@ -15,19 +15,32 @@ class GitObject {
   }
 }
 
-export class Branch extends GitObject {
+class Branch extends GitObject {
   constructor(hash, name, isDefault) {
     super(hash, "branch");
     this.name = name;
     this.isDefault = isDefault;
   }
 
+  isDefault() {
+    return this.isDefault;
+  }
+
   getBranchName() {
     return this.name;
   }
+
+  getFullInfo() {
+    return {
+      hash: this.hash,
+      type: this.type,
+      name: this.name,
+      isDefault: this.isDefault,
+    };
+  }
 }
 
-export class Commit extends GitObject {
+class Commit extends GitObject {
   constructor(hash, author, timeStamp, subject, body = "") {
     super(hash, "commit");
     this.author = author;
@@ -62,7 +75,7 @@ export class Commit extends GitObject {
     };
   }
 }
-export class GitTree extends GitObject {
+class GitTree extends GitObject {
   constructor(
     hash,
     objType,
@@ -114,4 +127,9 @@ export class GitTree extends GitObject {
   }
 }
 
-export default GitObject;
+module.exports = {
+  GitObject,
+  GitTree,
+  Branch,
+  Commit,
+};

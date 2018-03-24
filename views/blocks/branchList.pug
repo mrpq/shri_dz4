@@ -1,0 +1,13 @@
+mixin branchList(branches)
+  .branches
+    ul.branches__list
+      -
+      each branch in branches
+        li.branches__item.branch
+          .branch__default
+            if branch.isDefault
+              .branch__default-mark *
+          .branch__name
+            a.branch__link(href= `/commits/${branch.hash}`)= branch.name
+          .branch__hash= branch.hash
+            

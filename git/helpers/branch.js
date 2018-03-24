@@ -1,17 +1,17 @@
 const { Branch } = require("../models");
 
-// const promisifiedExec = require("../../utils/utils.js");
+const { promisifiedExec } = require("../../utils/utils.js");
 
-// const execGitBranchForDir = promisifiedExec("git branch -v");
+const execGitBranchInDir = promisifiedExec("git branch -v");
 
 const createBranchFromTextLine = (line) => {
   const hasLeadingAsterisk = l => l[0] === "*";
-  const splitLine = line.split(" ");
+  const splitLine = line.split(/\s+/, 4);
   if (hasLeadingAsterisk(line)) {
-    const [, name, shortHash, ...rest] = splitLine;
+    const [, name, shortHash, ...rst] = splitLine;
     return new Branch(shortHash, name, true);
   }
-  const [, , name, shortHash, ...rest] = splitLine;
+  const [, name, shortHash, ...rest] = splitLine;
   return new Branch(shortHash, name, false);
 };
 
@@ -20,6 +20,11 @@ const parseGitBranchOutput = (data) => {
   const branches = lines.map(createBranchFromTextLine);
   return branches;
 };
+
+const getRepoBranches = dir =>
+  execGitBranchInDir(dir).then(streams =>
+    // console.log(streams.stdout);
+    parseGitBranchOutput(streams.stdout));
 
 // export const getGitBranchesForDir = dir =>
 //   execGitBranchForDir(dir).then((streams) => {
@@ -30,4 +35,6 @@ const parseGitBranchOutput = (data) => {
 
 module.exports = {
   parseGitBranchOutput,
+  execGitBranchInDir,
+  getRepoBranches,
 };

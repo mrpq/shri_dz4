@@ -1,0 +1,10 @@
+html
+  include ./blocks/head.pug
+  +head({title})
+  body
+    include ./blocks/heading.pug
+    include ./blocks/branchList.pug
+    +heading()
+    h2 Список веток
+    +branchList(branches)
+  
