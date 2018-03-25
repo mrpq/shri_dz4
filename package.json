@@ -4,18 +4,30 @@
   "description": "Infra-app-tests",
   "main": "app.js",
   "scripts": {
-    "test": "npm run test"
+    "dev": "nodemon app.js",
+    "start": "node app.js",
+    "test": "jest",
+    "test-watch": "jest --watch",
+    "lint": "eslint ."
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mrpq/shri_dz4.git"
   },
   "dependencies": {
-    "express": "^4.16.3",
+    "autoprefixer": "^8.2.0",
     "babel-core": "^6.26.0",
     "babel-jest": "^23.0.0-alpha.0",
     "babel-preset-env": "^1.6.1",
+    "dotenv": "^5.0.1",
+    "express": "^4.16.3",
     "is-valid-path": "^0.1.1",
+    "moment": "^2.21.0",
+    "morgan": "^1.9.0",
+    "node-sass": "^4.8.3",
+    "parcel-bundler": "^1.6.2",
+    "postcss-modules": "^1.1.0",
+    "pug": "^2.0.3",
     "regenerator-runtime": "^0.11.1"
   },
   "devDependencies": {
@@ -24,14 +36,7 @@
     "eslint-plugin-import": "^2.9.0",
     "jest": "^22.4.2"
   },
-  "keywords": [
-    "docker",
-    "travis",
-    "heroku",
-    "ci",
-    "cd",
-    "node.js"
-  ],
+  "keywords": ["docker", "travis", "heroku", "ci", "cd", "node.js"],
   "author": "Viktor Voronin",
   "license": "ISC",
   "bugs": {
