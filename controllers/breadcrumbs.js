@@ -6,6 +6,26 @@ const { getFullFs } = require("../git/helpers/lstree");
 
 const getRepoDir = repo => path.join(getAppRoot(), process.env.REPOS_DIR, repo);
 
+class Breadcrumbs {
+  constructor() {
+    this.breadcrumbs = [];
+  }
+
+  addBreadcrumb(name, link) {
+    this.breadcrumbs.push({ name, link, last: true });
+    this._moveTail();
+  }
+
+  _moveTail() {
+    const { length } = this.breadcrumbs;
+    if (length >= 2) this.breadcrumbs[length - 2].last = false;
+  }
+
+  getBreadcumbs() {
+    return this.breadcrumbs;
+  }
+}
+
 const createObjParentTree = async (obj, repo, commitHash) => {
   const repoDir = getRepoDir(repo);
   const allFiles = await getFullFs(repoDir, commitHash);
@@ -42,17 +62,12 @@ const createBreadcrumbs = async (obj, repo, branchHash, commitHash) => {
 
   const parentTree = await createObjParentTree(obj, repo, commitHash);
 
-  const breadcrumbs = [];
+  const breadcrumbs = new Breadcrumbs();
   for (let i = 0; i < parentTree.length; i += 1) {
     const node = parentTree[i];
-    // const last = i === parentTree.length - 1;
     const name = createName(node);
     const link = createLink(node);
-    breadcrumbs.push({
-      // last,
-      name,
-      link,
-    });
+    breadcrumbs.addBreadcrumb(name, link);
   }
   return breadcrumbs;
 };

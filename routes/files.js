@@ -17,14 +17,14 @@ router.get("/:repo/:branchHash/:commitHash/:treeHash?", async (req, res) => {
   const branchName = repoBranches.find(b => b.getHash() === branchHash).getBranchName();
   const files = await getFs(repoDir, treeHash || commitHash);
   const breadcrumbs = await createBreadcrumbs(files[0], repo, branchHash, commitHash);
-  breadcrumbs[breadcrumbs.length - 1].last = true;
+  console.log(breadcrumbs.getBreadcumbs());
   res.render("files", {
     repo,
     branchName,
     branchHash,
     commitHash,
     files: files.map(f => f.getFullInfo()),
-    breadcrumbs,
+    breadcrumbs: breadcrumbs.getBreadcumbs(),
   });
 });
 
