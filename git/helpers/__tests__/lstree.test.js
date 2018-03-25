@@ -9,7 +9,6 @@ const getLsTreeTextLines = () => {
   return data;
 };
 
-const findFileByName = (files, name) => files.find(f => f.getName() === name);
 const findFilesByDir = (files, dir) => files.filter(f => f.getDir() === dir);
 
 describe("Тестирует parseGitLstreeOutput()", () => {

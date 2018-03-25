@@ -28,7 +28,8 @@ describe("Тестирует parseGitBranchOutput", () => {
     const branches = createBranches();
     const actual = branches.every(b => b instanceof Branch);
     const expected = true;
-    expect(actual).toBe(true);
+    // подготовка
+    expect(actual).toBe(expected);
   });
 
   it("Возвращаемый результат содержит все ветки", () => {

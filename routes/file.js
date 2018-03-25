@@ -1,7 +1,6 @@
 const express = require("express");
 const path = require("path");
 const { getAppRoot } = require("../utils/utils");
-// const { getFullFs } = require("../git/helpers/lstree");
 const { getFileContent } = require("../git/helpers/catfile");
 const { getRepoBranches } = require("../git/helpers/branch");
 const { GitTree } = require("../git/models");
@@ -11,7 +10,7 @@ const router = express.Router();
 
 const getRepoDir = repo => path.join(getAppRoot(), process.env.REPOS_DIR, repo);
 
-router.get("/:repo/:branchHash/:commitHash/:fileHash/:fileName", async (req, res, next) => {
+router.get("/:repo/:branchHash/:commitHash/:fileHash/:fileName", async (req, res) => {
   const {
     repo, branchHash, commitHash, fileHash, fileName,
   } = req.params;

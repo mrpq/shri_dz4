@@ -6,10 +6,10 @@ const createBranchFromTextLine = (line) => {
   const hasLeadingAsterisk = l => l[0] === "*";
   const splitLine = line.split(/\s+/, 4);
   if (hasLeadingAsterisk(line)) {
-    const [, name, shortHash, ...rest] = splitLine;
+    const [, name, shortHash] = splitLine;
     return new Branch(shortHash, name, true);
   }
-  const [, name, shortHash, ...rest] = splitLine;
+  const [, name, shortHash] = splitLine;
   return new Branch(shortHash, name, false);
 };
 

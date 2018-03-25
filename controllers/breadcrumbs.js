@@ -33,8 +33,6 @@ class Breadcrumbs {
 }
 
 const createObjParentTree = async (obj, repo, commitHash) => {
-  const repoDir = getRepoDir(repo);
-  const allFiles = await getFullFs(repoDir, commitHash);
   const getParents = (obj, acc) => {
     const parent = obj.getParent();
     if (parent === null) {
@@ -42,6 +40,8 @@ const createObjParentTree = async (obj, repo, commitHash) => {
     }
     return getParents(parent, [parent, ...acc]);
   };
+  const repoDir = getRepoDir(repo);
+  const allFiles = await getFullFs(repoDir, commitHash);
   const parentTree = [];
   const root = new Commit(commitHash, "", "", "");
   parentTree.push(root);
@@ -60,7 +60,6 @@ const createBreadcrumbs = async (
   const createBcName = node => (node.getType() === "commit" ? "/" : node.getName());
   const createBcLink = (node) => {
     let link;
-    const nodeType = node.getType();
     switch (true) {
     case node.getType() === "commit":
     case node.getObjType() === "tree":

@@ -4,7 +4,7 @@ const fs = require("fs");
 
 const promisifiedExec = command => dir =>
   new Promise((resolve, reject) => {
-    const p = cp.exec(command, { cwd: dir }, (err, stdout, stderr) => {
+    cp.exec(command, { cwd: dir }, (err, stdout, stderr) => {
       if (err) {
         return reject(err);
       }
