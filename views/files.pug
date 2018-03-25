@@ -6,13 +6,13 @@ mixin fileList(files, repo, branch)
         li.files__item.file
           .file__name
             if file.objType === 'tree'
-              a.file__link(href=`/files/${repo}/${branchHash}/${file.hash}`)= file.name
+              a.file__link(href=`/files/${repo}/${branchHash}/${commitHash}/${file.hash}`)= file.name
               .file__type dir
             else
-              a.file__link(href=`/file/${repo}/${branchHash}/${commitHash}/${file.hash}`)= file.name
+              a.file__link(href=`/file/${repo}/${branchHash}/${commitHash}/${file.hash}/${file.name}`)= file.name
               .file__type file
             .file__hash= file.hash
-            
+
 html
   include ./blocks/head.pug
   +head({title})
@@ -29,8 +29,8 @@ html
         a.breadcrumb__link(href=`/commits/${repo}/${branchHash}`)= `Branch: ${branchName} (${branchHash})`
       li.breadcrumb__item
         .breadcrumb__link= `Commit: ${commitHash})`
-      if parent
-         a.file__link(href=`/files/${repo}/${branchHash}/${parent.getParent() ? parent.getParent().getHash() : branchHash}`) < Back
+    include ./blocks/breadcrumbs.pug
+    +breadcrumbs(breadcrumbs)     
     h2 Список файлов
     +fileList(files, repo, branchHash, commitHash, parent)
   

@@ -1,0 +1,9 @@
+mixin breadcrumbs(breadcrumbs)
+  .breadcrumbs
+    ul.breadcrumbs__list
+      each bc in breadcrumbs
+        li.breadcrumbs__item
+          if bc.last
+            .breadcrumbs__link.breadcrumbs__link--inactive= bc.name
+          else
+            a.breadcrumbs__link(href=bc.link)= bc.name

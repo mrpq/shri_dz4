@@ -14,8 +14,8 @@ html
         a.breadcrumb__link(href=`/commits/${repo}/${branchHash}`)= `Branch: ${branchName} (${branchHash})`
       li.breadcrumb__item
         a.breadcrumb__link(href=`/files/${repo}/${branchHash}/${commitHash}`)= `Commit: ${commitHash})`
-      if parent
-        p test
-    h2 Список файлов
+    include ./blocks/breadcrumbs.pug
+    +breadcrumbs(breadcrumbs)        
+    h2 Содержимое файла 
     //- +file(content, repo, branch)
     pre.file= content
