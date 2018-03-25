@@ -17,7 +17,7 @@ router.get("/:repo/:branchHash/:commitHash/:fileHash", async (req, res, next) =>
   const repoBranches = await getRepoBranches(repoDir);
   const branchName = repoBranches.find(b => b.getHash() === branchHash).getBranchName();
   const content = await getFileContent(repoDir, fileHash);
-  const allFiles = await getFullFs(repoDir, branchHash);
+  const allFiles = await getFullFs(repoDir, commitHash);
   const sample = allFiles.find(f => f.getHash() === fileHash);
   const parent = sample.getParent() || null;
   res.render("file", {
