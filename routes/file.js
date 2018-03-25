@@ -20,9 +20,8 @@ router.get("/:repo/:branchHash/:commitHash/:fileHash/:fileName", async (req, res
   const branchName = repoBranches.find(b => b.getHash() === branchHash).getBranchName();
   const fileObject = new GitTree(fileHash, "blob", fileName);
   const content = await getFileContent(repoDir, fileHash);
-  const breadcrumbs = await createBreadcrumbs(fileObject, repo, branchHash, commitHash);
-  breadcrumbs.push(fileObject);
-  breadcrumbs[breadcrumbs.length - 1].last = true;
+  const breadcrumbs = await createBreadcrumbs(repo, branchHash, branchName, commitHash, fileObject);
+  breadcrumbs.addGitObjBreadcrumb(fileObject);
   // console.log(breadcrumbs);
   res.render("file", {
     repo,
@@ -30,7 +29,7 @@ router.get("/:repo/:branchHash/:commitHash/:fileHash/:fileName", async (req, res
     branchName,
     branchHash,
     commitHash,
-    breadcrumbs,
+    breadcrumbs: breadcrumbs.getBreadcumbs(),
   });
 
   // getRepoBranches(repoDir).then((branches) => {

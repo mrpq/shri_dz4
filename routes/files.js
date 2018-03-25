@@ -16,7 +16,7 @@ router.get("/:repo/:branchHash/:commitHash/:treeHash?", async (req, res) => {
   const repoBranches = await getRepoBranches(repoDir);
   const branchName = repoBranches.find(b => b.getHash() === branchHash).getBranchName();
   const files = await getFs(repoDir, treeHash || commitHash);
-  const breadcrumbs = await createBreadcrumbs(files[0], repo, branchHash, commitHash);
+  const breadcrumbs = await createBreadcrumbs(repo, branchHash, branchName, commitHash, files[0]);
   console.log(breadcrumbs.getBreadcumbs());
   res.render("files", {
     repo,

@@ -10,7 +10,9 @@ html
   +head({title})
   body
     include ./blocks/heading.pug
-    //- include repos
     +heading()
+    include ./blocks/breadcrumbs.pug
+    +breadcrumbs(breadcrumbs)
+    h2 Список репозиториев
     +repos(repos)
   

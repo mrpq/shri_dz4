@@ -16,6 +16,12 @@ class Breadcrumbs {
     this._moveTail();
   }
 
+  addGitObjBreadcrumb(obj) {
+    const name = obj.getName();
+    const link = "";
+    this.addBreadcrumb(name, link);
+  }
+
   _moveTail() {
     const { length } = this.breadcrumbs;
     if (length >= 2) this.breadcrumbs[length - 2].last = false;
@@ -44,9 +50,15 @@ const createObjParentTree = async (obj, repo, commitHash) => {
   return parentTree.concat(parents);
 };
 
-const createBreadcrumbs = async (obj, repo, branchHash, commitHash) => {
-  const createName = node => (node.getType() === "commit" ? "/" : node.getName());
-  const createLink = (node) => {
+const createBreadcrumbs = async (
+  repo = null,
+  branchHash = null,
+  branchName = null,
+  commitHash = null,
+  obj = null,
+) => {
+  const createBcName = node => (node.getType() === "commit" ? "/" : node.getName());
+  const createBcLink = (node) => {
     let link;
     const nodeType = node.getType();
     switch (true) {
@@ -59,15 +71,28 @@ const createBreadcrumbs = async (obj, repo, branchHash, commitHash) => {
     }
     return link;
   };
-
-  const parentTree = await createObjParentTree(obj, repo, commitHash);
-
   const breadcrumbs = new Breadcrumbs();
-  for (let i = 0; i < parentTree.length; i += 1) {
-    const node = parentTree[i];
-    const name = createName(node);
-    const link = createLink(node);
-    breadcrumbs.addBreadcrumb(name, link);
+  breadcrumbs.addBreadcrumb("Home", "/");
+  if (repo) {
+    breadcrumbs.addBreadcrumb(`Repo: ${repo}`, `/branches/${repo}`);
+  }
+  if (branchHash) {
+    breadcrumbs.addBreadcrumb(`Branch: ${branchName}`, `/commits/${repo}/${branchHash}`);
+  }
+  if (commitHash) {
+    breadcrumbs.addBreadcrumb(
+      `Commit: ${commitHash.substr(0, 7)}`,
+      `/files/${repo}/${branchHash}/${commitHash}`,
+    );
+  }
+  if (obj) {
+    const parentTree = await createObjParentTree(obj, repo, commitHash);
+    for (let i = 0; i < parentTree.length; i += 1) {
+      const node = parentTree[i];
+      const name = createBcName(node);
+      const link = createBcLink(node);
+      breadcrumbs.addBreadcrumb(name, link);
+    }
   }
   return breadcrumbs;
 };
