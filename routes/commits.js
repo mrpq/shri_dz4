@@ -9,19 +9,17 @@ const router = express.Router();
 const getRepoDir = repo => path.join(getAppRoot(), process.env.REPOS_DIR, repo);
 
 /* GET home page. */
-router.get("/:repo/:hash", (req, res, next) => {
+router.get("/:repo/:hash", async (req, res) => {
   const { repo, hash } = req.params;
   const repoDir = getRepoDir(repo);
-  getRepoBranches(repoDir).then((branches) => {
-    const branchName = branches.find(b => b.getHash() === hash).getBranchName();
-    getBranchLog(repoDir, hash).then((logEntries) => {
-      res.render("commits", {
-        repo,
-        branchName,
-        branchHash: hash,
-        commits: logEntries.map(e => e.getFullInfo()),
-      });
-    });
+  const branches = await getRepoBranches(repoDir);
+  const branchName = branches.find(b => b.getHash() === hash).getBranchName();
+  const logEntries = await getBranchLog(repoDir, hash);
+  res.render("commits", {
+    repo,
+    branchName,
+    branchHash: hash,
+    commits: logEntries.map(e => e.getFullInfo()),
   });
 });
 

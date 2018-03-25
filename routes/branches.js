@@ -8,11 +8,10 @@ const router = express.Router();
 const getRepoDir = repo => path.join(getAppRoot(), process.env.REPOS_DIR, repo);
 
 /* GET home page. */
-router.get("/:repo", (req, res, next) => {
+router.get("/:repo", async (req, res) => {
   const repoDir = getRepoDir(req.params.repo);
-  getRepoBranches(repoDir).then((branches) => {
-    res.render("branches", { repo: req.params.repo, branches: branches.map(b => b.getFullInfo()) });
-  });
+  const branches = await getRepoBranches(repoDir);
+  res.render("branches", { repo: req.params.repo, branches: branches.map(b => b.getFullInfo()) });
 });
 
 module.exports = router;

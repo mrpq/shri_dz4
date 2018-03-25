@@ -6,12 +6,11 @@ const router = express.Router();
 
 const getReposList = () => promisifiedReadDir(path.join(getAppRoot(), process.env.REPOS_DIR));
 /* GET home page. */
-router.get("/", (req, res, next) => {
-  getReposList().then((repos) => {
-    res.render("index", {
-      title: "Express",
-      repos: repos.map(r => ({ name: r })),
-    });
+router.get("/", async (req, res) => {
+  const repos = await getReposList();
+  res.render("index", {
+    title: "Express",
+    repos: repos.map(r => ({ name: r })),
   });
 });
 

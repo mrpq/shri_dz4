@@ -31,19 +31,6 @@ router.get("/:repo/:branchHash/:commitHash", async (req, res, next) => {
     files: files.map(f => f.getFullInfo()),
     parent,
   });
-  // console.log(repoBranches);
-  // getRepoBranches(repoDir).then((branches) => {
-  //   // const branchName = branches.find(b => b.getHash() === branchHash).getBranchName();
-  //   getFs(repoDir, commitHash).then(async (files) => {
-  //     res.render("files", {
-  //       repo,
-  //       branchName,
-  //       branchHash,
-  //       commitHash,
-  //       files: files.map(f => f.getFullInfo()),
-  //     });
-  //   });
-  // });
 });
 
 module.exports = router;

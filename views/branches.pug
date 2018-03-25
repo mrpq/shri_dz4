@@ -1,20 +1,22 @@
-mixin commitList(repo, branch, commits)
-  .commits
-    ul.commits__list
+mixin branchList(branches, repo)
+  .branches
+    ul.branches__list
       -
-      each commit in commits
-        li.commits__item.commit
-          .commit__hash
-            a.commit__link(href= `/files/${repo}/${branchHash}/${commit.hash}`)= commit.hash
-          .commit__time= commit.time.format()
-          .commit__subject= commit.subject
+      each branch in branches
+        li.branches__item.branch
+          .branch__default
+            if branch.isDefault
+              .branch__default-mark *
+          .branch__name
+            a.branch__link(href= `/commits/${repo}/${branch.hash}`)= branch.name
+          .branch__hash= branch.hash
             
 html
   include ./blocks/head.pug
   +head({title})
   body
     include ./blocks/heading.pug
-    include ./blocks/branchList.pug
+    //- include ./blocks/branchList.pug
     +heading()
     ul.breadcrumb
       li.breadcrumb__item
