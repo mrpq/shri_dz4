@@ -15,6 +15,12 @@ app.use(morgan("tiny"));
 app.set("view engine", "pug");
 app.set("views", path.join(__dirname, "views"));
 
+const Bundler = require("parcel-bundler");
+
+const bundler = new Bundler(path.resolve(__dirname, "assets/index.js"));
+app.use(bundler.middleware());
+
+app.use("/assets", express.static(path.join(__dirname, "dist")));
 app.use("/", indexRouter);
 app.use("/branches", reposRouter);
 app.use("/commits", commitsRouter);
