@@ -1,3 +1,14 @@
+mixin commitList(repo, branch, commits)
+  .commits
+    ul.commits__list
+      -
+      each commit in commits
+        li.commits__item.commit
+          .commit__hash
+            a.commit__link(href= `/files/${repo}/${branchHash}/${commit.hash}`)= commit.hash
+          .commit__time= commit.time.format()
+          .commit__subject= commit.subject
+            
 html
   include ./blocks/head.pug
   +head({title})

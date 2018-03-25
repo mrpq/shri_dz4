@@ -3,7 +3,7 @@ html
   +head({title})
   body
     include ./blocks/heading.pug
-    include ./blocks/file.pug
+    //- include ./blocks/file.pug
     +heading()
     ul.breadcrumb
       li.breadcrumb__item
@@ -17,4 +17,5 @@ html
       if parent
         p test
     h2 Список файлов
-    +file(content, repo, branch)
+    //- +file(content, repo, branch)
+    pre.file= content

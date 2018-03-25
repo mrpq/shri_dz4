@@ -1,9 +1,24 @@
+mixin fileList(files, repo, branch)
+  .files
+    ul.files__list
+      -
+      each file in files
+        li.files__item.file
+          .file__name
+            if file.objType === 'tree'
+              a.file__link(href=`/files/${repo}/${branchHash}/${file.hash}`)= file.name
+              .file__type dir
+            else
+              a.file__link(href=`/file/${repo}/${branchHash}/${commitHash}/${file.hash}`)= file.name
+              .file__type file
+            .file__hash= file.hash
+            
 html
   include ./blocks/head.pug
   +head({title})
   body
     include ./blocks/heading.pug
-    include ./blocks/fileList.pug
+    //- include ./blocks/fileList.pug
     +heading() 
     ul.breadcrumb
       li.breadcrumb__item
@@ -18,3 +33,4 @@ html
          a.file__link(href=`/files/${repo}/${branchHash}/${parent.getParent() ? parent.getParent().getHash() : branchHash}`) < Back
     h2 Список файлов
     +fileList(files, repo, branchHash, commitHash, parent)
+  

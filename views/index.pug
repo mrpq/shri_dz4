@@ -1,9 +1,16 @@
+mixin repos(repos)
+  .repos
+    ul.repos__list
+      each repo in repos
+        li.repos__item
+          a.repos__link(href= `/branches/${repo.name}`)= repo.name
+
 html
   include ./blocks/head.pug
   +head({title})
   body
     include ./blocks/heading.pug
-    include ./blocks/repos.pug
+    //- include repos
     +heading()
     +repos(repos)
   
