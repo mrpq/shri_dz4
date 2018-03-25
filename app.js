@@ -29,5 +29,5 @@ app.use("/file", fileRouter);
 // app.get("/repo/:repo", (req, res, next) => {
 //   res.send(req.params.repo);
 // });
-
-app.listen(3000);
+const port = process.env.PORT || 3000;
+app.listen(port);
