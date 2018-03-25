@@ -16,5 +16,6 @@ deploy:
   app: 'shri-dz4-staging'
   on:
     repo: mrpq/shri_dz4
-    all_branches: true
-    tags: false
+    branch: master
+    # all_branches: true
+    # tags: false
