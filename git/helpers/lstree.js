@@ -35,14 +35,19 @@ const parseGitLstreeOutput = (data) => {
 };
 
 const getFs = (repoDir, hash) =>
-  promisifiedExec(`git ls-tree -t -r ${hash}`)(repoDir).then((streams) => {
+  promisifiedExec(`git ls-tree ${hash}`)(repoDir).then((streams) => {
     const res = parseGitLstreeOutput(streams.stdout);
-    console.log(res);
     return res;
   });
 
+const getFullFs = (repoDir, branchHash) =>
+  promisifiedExec(`git ls-tree -t -r ${branchHash}`)(repoDir).then((streams) => {
+    const res = parseGitLstreeOutput(streams.stdout);
+    return res;
+  });
 // export const getNodeChildren = (data, node) => {};
 module.exports = {
   parseGitLstreeOutput,
   getFs,
+  getFullFs,
 };

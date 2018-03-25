@@ -14,5 +14,7 @@ html
         a.breadcrumb__link(href=`/commits/${repo}/${branchHash}`)= `Branch: ${branchName} (${branchHash})`
       li.breadcrumb__item
         .breadcrumb__link= `Commit: ${commitHash})`
+      if parent
+         a.file__link(href=`/files/${repo}/${branchHash}/${parent.getParent() ? parent.getParent().getHash() : branchHash}`) < Back
     h2 Список файлов
-    +fileList(files, repo, branchHash, commitHash)
+    +fileList(files, repo, branchHash, commitHash, parent)

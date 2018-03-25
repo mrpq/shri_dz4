@@ -6,9 +6,9 @@ const promisifiedExec = command => dir =>
   new Promise((resolve, reject) => {
     const p = cp.exec(command, { cwd: dir }, (err, stdout, stderr) => {
       if (err) {
-        reject(err);
+        return reject(err);
       }
-      resolve({ stdout, stderr });
+      return resolve({ stdout, stderr });
     });
   });
 
@@ -24,8 +24,11 @@ const promisifiedReadDir = dir =>
 
 const getAppRoot = () => path.dirname(require.main.filename);
 
+const getGitObjectType = (hash, dir) => promisifiedExec(`git cat-file -t ${hash}`)(dir);
+
 module.exports = {
   promisifiedExec,
   promisifiedReadDir,
   getAppRoot,
+  getGitObjectType,
 };
