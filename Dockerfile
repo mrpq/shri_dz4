@@ -1,8 +1,9 @@
-FROM node:9.8-slim
+FROM node:9
 
 # WORKDIR /usr/src/app
 COPY package.json package.json
 RUN npm install
+RUN git clone --mirror https://github.com/mrpq/shri_dz4.git repos/demo
 COPY . .
 
 # ENV NODE_ENV=production
