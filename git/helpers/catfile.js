@@ -1,8 +1,8 @@
 const { promisifiedExec } = require("../../utils/utils");
 
-const getFileContent = (repoDir, hash) => {
-  const p = promisifiedExec(`git cat-file -p ${hash}`)(repoDir);
-  return p.then(streams => streams.stdout);
+const getFileContent = async (repoDir, hash) => {
+  const streams = await promisifiedExec(`git cat-file -p ${hash}`)(repoDir);
+  return streams.stdout;
 };
 
 module.exports = {

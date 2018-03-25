@@ -1,9 +1,5 @@
 const { Commit } = require("../models");
 const { promisifiedExec } = require("../../utils/utils");
-// import { Commit } from "../models";
-// git log  --format=format:%H___%an___%cI___%s
-
-const execGitLog = (hash = "") => promisifiedExec();
 
 const createLogEntryFromTextLine = (line) => {
   const [hash, author, time, subject] = line.split("___");
@@ -16,15 +12,13 @@ const parseGitLogOutput = (data) => {
   return logEntries;
 };
 
-const getBranchLog = (repoDir, hash) => {
-  const p = promisifiedExec(`git log ${hash} --format=format:%H___%an___%cI___%s`)(repoDir);
-  return p.then((streams) => {
-    const data = streams.stdout;
-    return parseGitLogOutput(data);
-  });
+const getCommitLog = async (repoDir, hash) => {
+  const command = `git log ${hash} --format=format:%H___%an___%cI___%s`;
+  const streams = await promisifiedExec(command)(repoDir);
+  return parseGitLogOutput(streams.stdout);
 };
 
 module.exports = {
   parseGitLogOutput,
-  getBranchLog,
+  getCommitLog,
 };
