@@ -8,7 +8,7 @@ const fs = require("fs");
 // const repoDir = "./testrepo";
 
 const createBranches = () => {
-  const file = `${process.cwd()}/src/git/helpers/__tests__/git_branch_output.txt`;
+  const file = `${process.cwd()}/git/helpers/__tests__/git_branch_output.txt`;
   const data = fs.readFileSync(file, "utf8");
   const branches = parseGitBranchOutput(data);
   return branches;

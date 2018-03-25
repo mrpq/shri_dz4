@@ -4,7 +4,7 @@ const { parseGitLstreeOutput } = require("../lstree");
 const fs = require("fs");
 
 const getLsTreeTextLines = () => {
-  const file = `${process.cwd()}/src/git/helpers/__tests__/git_lstree_output.txt`;
+  const file = `${process.cwd()}/git/helpers/__tests__/git_lstree_output.txt`;
   const data = fs.readFileSync(file, "utf8");
   return data;
 };

@@ -5,7 +5,7 @@ const fs = require("fs");
 const moment = require("moment");
 
 const createLogEntries = () => {
-  const file = `${process.cwd()}/src/git/helpers/__tests__/git_log_output.txt`;
+  const file = `${process.cwd()}/git/helpers/__tests__/git_log_output.txt`;
   const data = fs.readFileSync(file, "utf8");
   const logEntries = parseGitLogOutput(data);
   return logEntries;
