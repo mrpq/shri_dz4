@@ -22,7 +22,11 @@ router.get("/:repo/:branchHash", async (req, res) => {
     branchName,
     branchHash,
     breadcrumbs: breadcrumbs.getBreadcumbs(),
-    commits: logEntries.map(e => e.getFullInfo()),
+    commits: logEntries.map((e) => {
+      console.log("passing to template", e.getTime());
+      const commit = e.getFullInfo();
+      return commit;
+    }),
   });
 });
 
