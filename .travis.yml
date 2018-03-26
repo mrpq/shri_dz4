@@ -1,14 +1,12 @@
-sudo: required
-services:
-- docker
-before_install:
-- docker build -t testapp .
-- docker run -d -p 80:80 testapp
-before_script:
-- npm install
+language: node_js
+node_js:
+ - 'node'
+ - 8
+# before_script:
+# - npm install
 script:
 - npm run lint
-- npm run test
+# - npm run test
 deploy:
 - provider: heroku
   api_key:

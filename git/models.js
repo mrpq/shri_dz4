@@ -44,7 +44,9 @@ class Commit extends GitObject {
   constructor(hash, author, timeStamp, subject, body = "") {
     super(hash, "commit");
     this.author = author;
+    console.log("Creating commit. Timestamp = ", timeStamp);
     this.time = moment(timeStamp);
+    console.log("Commit this.time = ", this.time.format());
     this.subject = subject;
     this.body = body;
   }
