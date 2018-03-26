@@ -1,4 +1,5 @@
-@import "inc.scss";
-body {
-  color: black;
-}
+@import "normalize.scss";
+@import "vars.scss";
+@import "global.scss";
+@import "breadcrumbs.scss";
+@import "files.scss";

@@ -1,0 +1,22 @@
+:root {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Courier New", Courier, monospace;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+.page {
+  background-color: $color-bg;
+  color: $color-white;
+}
+
+a {
+  text-decoration: none;
+}

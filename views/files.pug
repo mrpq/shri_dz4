@@ -1,22 +1,39 @@
 mixin fileList(files, repo, branch)
-  .files
-    ul.files__list
-      -
+  table.files
+    thead.files__heading
+      tr
+        td(colspan=3).files__table-name Список файлов
+    tbody.files__list
       each file in files
-        li.files__item.file
-          .file__name
-            if file.objType === 'tree'
+        tr.files__item
+          if file.objType === 'tree'
+            td.file__type.file__type--dir D
+            td
               a.file__link(href=`/files/${repo}/${branchHash}/${commitHash}/${file.hash}`)= file.name
-              .file__type dir
-            else
+          else
+            td.files__type.file__type--file F
+            td
               a.file__link(href=`/file/${repo}/${branchHash}/${commitHash}/${file.hash}/${file.name}`)= file.name
-              .file__type file
-            .file__hash= file.hash
+          td
+            span.file__hash= file.hash
+  //- .files
+  //-   ul.files__list
+  //-     -
+  //-     each file in files
+  //-       li.files__item.file
+  //-         .file__name
+  //-           if file.objType === 'tree'
+  //-             .file__type dir
+  //-             a.file__link(href=`/files/${repo}/${branchHash}/${commitHash}/${file.hash}`)= file.name
+  //-           else
+  //-             a.file__link(href=`/file/${repo}/${branchHash}/${commitHash}/${file.hash}/${file.name}`)= file.name
+  //-             .file__type file
+  //-           .file__hash= file.hash
 
 html
   include ./blocks/head.pug
   +head({title})
-  body
+  body.page
     include ./blocks/heading.pug
     +heading() 
     include ./blocks/breadcrumbs.pug
