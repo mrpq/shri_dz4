@@ -15,7 +15,11 @@ const parseGitLogOutput = (data) => {
 const getCommitLog = async (repoDir, hash) => {
   const command = `git log ${hash} --format=format:%H___%an___%cI___%s`;
   const streams = await promisifiedExec(command)(repoDir);
-  return parseGitLogOutput(streams.stdout);
+  console.log(command);
+  console.log(streams.stdout);
+  const res = parseGitLogOutput(streams.stdout);
+  console.log(res);
+  return res;
 };
 
 module.exports = {
