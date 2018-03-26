@@ -1,0 +1,28 @@
+.branches td {
+  padding: 4px 8px;
+  font-weight: bold;
+  border: 2px solid $color-gray-dark;
+}
+
+.branches__table-name {
+  font-size: 20px;
+  text-align: center;
+}
+
+.branch__link {
+  color: $color-white;
+  &:visited {
+    color: $color-white;
+  }
+  &:hover {
+    color: $color-gray-dark;
+  }
+}
+
+.branch__default-mark {
+  color: $color-green;
+}
+
+.branch__hash {
+  color: $color-yellow;
+}

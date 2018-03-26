@@ -1,19 +1,12 @@
-mixin repos(repos)
+extends layout.pug
+
+block content
+  h2 Выберите репозиторий  
   .repos
     ul.repos__list
       each repo in repos
         li.repos__item
           a.repos__link(href= `/branches/${repo.name}`)= repo.name
+  
 
-html
-  include ./blocks/head.pug
-  +head({title})
-  body.page
-    include ./blocks/heading.pug
-    +heading()
-    include ./blocks/breadcrumbs.pug
-    +breadcrumbs(breadcrumbs)
-    h2 Список репозиториев
-    +repos(repos)
-    script(src='/assets/index.js')
   

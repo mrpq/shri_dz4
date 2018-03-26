@@ -1,0 +1,13 @@
+html
+  include ./blocks/head.pug
+  +head({title})
+  body.page
+    .page__container
+      header.main-header
+        a.main-header__home(href='/') На главную
+      include ./blocks/breadcrumbs.pug
+      +breadcrumbs(breadcrumbs)
+      block content
+        p Test
+      block scripts
+        script(src='/assets/index.js')

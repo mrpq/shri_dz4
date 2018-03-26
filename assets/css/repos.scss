@@ -1,0 +1,17 @@
+.repos {
+  margin-top: 20px;
+  border: 2px solid $color-gray-dark;
+}
+.repos__item {
+  padding: 8px 16px;
+}
+.repos__link {
+  font-weight: bold;
+  color: $color-white;
+  &:visited {
+    color: $color-white;
+  }
+  &:hover {
+    color: $color-gray-dark;
+  }
+}
