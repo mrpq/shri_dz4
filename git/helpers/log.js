@@ -13,7 +13,7 @@ const parseGitLogOutput = (data) => {
 };
 
 const getCommitLog = async (repoDir, hash) => {
-  const command = `git log ${hash} --format=format:%H___%an___%cI___%s`;
+  const command = `git log ${hash} --format=format:%H___%an___%cd___%s --date=iso`;
   const streams = await promisifiedExec(command)(repoDir);
   return parseGitLogOutput(streams.stdout);
 };
