@@ -27,6 +27,8 @@ const bundler = new Bundler(path.resolve(__dirname, "assets/index.js"));
 app.use(bundler.middleware());
 ```
 
+Если проект запускается в production окружении, бандлер минифицирует код.
+
 Чтобы посмотреть как это работает нужно запустить проект командой `npm run dev`
 При изменениях в js и scss файлах в директории `assets/` будет выполяться пересборка с логированием в консоль.
 
