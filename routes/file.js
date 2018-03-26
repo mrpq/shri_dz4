@@ -21,7 +21,6 @@ router.get("/:repo/:branchHash/:commitHash/:fileHash/:fileName", async (req, res
   const content = await getFileContent(repoDir, fileHash);
   const breadcrumbs = await createBreadcrumbs(repo, branchHash, branchName, commitHash, fileObject);
   breadcrumbs.addGitObjBreadcrumb(fileObject);
-  // console.log(breadcrumbs);
   res.render("file", {
     repo,
     content,
@@ -30,11 +29,6 @@ router.get("/:repo/:branchHash/:commitHash/:fileHash/:fileName", async (req, res
     commitHash,
     breadcrumbs: breadcrumbs.getBreadcumbs(),
   });
-
-  // getRepoBranches(repoDir).then((branches) => {
-  //   getFileContent(repoDir, fileHash).then((content) => {
-  //   });
-  // });
 });
 
 module.exports = router;

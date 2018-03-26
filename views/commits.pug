@@ -14,14 +14,3 @@ block content
           td.commit__time= commit.time.format()
           td.commit__subject= commit.subject
             
-//- html
-//-   include ./blocks/head.pug
-//-   +head({title})
-//-   body
-//-     include ./blocks/heading.pug
-//-     +heading()
-//-     include ./blocks/breadcrumbs.pug
-//-     +breadcrumbs(breadcrumbs)
-//-     h2 Commit history
-//-     +commitList(repo, branchHash, commits)
-  

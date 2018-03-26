@@ -26,8 +26,6 @@ app.use("/branches", reposRouter);
 app.use("/commits", commitsRouter);
 app.use("/files", filesRouter);
 app.use("/file", fileRouter);
-// app.get("/repo/:repo", (req, res, next) => {
-//   res.send(req.params.repo);
-// });
+
 const port = process.env.PORT || 3000;
 app.listen(port);

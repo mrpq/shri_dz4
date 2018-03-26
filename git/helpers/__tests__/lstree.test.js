@@ -1,4 +1,3 @@
-// import { parseGitLstreeOutput } from "../lstree";
 const { parseGitLstreeOutput } = require("../lstree");
 
 const fs = require("fs");

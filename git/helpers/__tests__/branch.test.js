@@ -1,11 +1,7 @@
-// import { parseGitBranchOutput, Branch } from "../git/branch.js";
 import { parseGitBranchOutput } from "../branch";
 import { Branch } from "../../models";
-// const parseGitBranchOutput = require("../branch");
 
 const fs = require("fs");
-
-// const repoDir = "./testrepo";
 
 const createBranches = () => {
   const file = `${process.cwd()}/git/helpers/__tests__/git_branch_output.txt`;
