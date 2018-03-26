@@ -13,6 +13,6 @@ block content
             if branch.isDefault
               span.branch__default-mark *
           td.branch__name
-            a.branch__link(href= `/commits/${repo}/${branch.hash}`)= branch.name
+            a.branch__link(href= branch.link)= branch.name
           td.branch__hash= branch.hash
   

@@ -23,7 +23,7 @@ const promisifiedReadDir = dir =>
   });
 
 const getAppRoot = () => path.dirname(require.main.filename);
-
+const getRepoDir = repo => path.join(getAppRoot(), process.env.REPOS_DIR, repo);
 const getGitObjectType = (hash, dir) => promisifiedExec(`git cat-file -t ${hash}`)(dir);
 
 module.exports = {
@@ -31,4 +31,5 @@ module.exports = {
   promisifiedReadDir,
   getAppRoot,
   getGitObjectType,
+  getRepoDir,
 };

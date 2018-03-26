@@ -10,7 +10,7 @@ block content
       each commit in commits
         tr.commits__item.commit
           td.commit__hash
-            a.commit__link(href= `/files/${repo}/${branchHash}/${commit.hash}`)= commit.hash
+            a.commit__link(href= commit.link)= commit.hash
           td.commit__time= commit.time.format()
           td.commit__subject= commit.subject
             

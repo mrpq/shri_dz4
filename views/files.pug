@@ -10,11 +10,9 @@ block content
         tr.files__item
           if file.objType === 'tree'
             td.file__type.file__type--dir D
-            td
-              a.file__link(href=`/files/${repo}/${branchHash}/${commitHash}/${file.hash}`)= file.name
           else
             td.files__type.file__type--file F
-            td
-              a.file__link(href=`/file/${repo}/${branchHash}/${commitHash}/${file.hash}/${file.name}`)= file.name
+          td
+            a.file__link(href=file.link)= file.name
           td
             span.file__hash= file.hash
