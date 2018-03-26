@@ -6,7 +6,7 @@ RUN git clone --mirror https://github.com/mrpq/shri_dz4.git repos/demo
 COPY . .
 
 ENV REPOS_DIR=repos
-ENV NODE_ENV=production
+ENV NODE_ENV=development
 EXPOSE 3000
 
 CMD ["node",  "app.js"]
