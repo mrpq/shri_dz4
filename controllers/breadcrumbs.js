@@ -98,4 +98,5 @@ const createBreadcrumbs = async (
 
 module.exports = {
   createBreadcrumbs,
+  Breadcrumbs,
 };
