@@ -171,7 +171,6 @@ describe("Страница списка файлов", () => {
       .click(`a[href*="${dirHash}"`)
       .getUrl()
       .then((url) => {
-        console.log(url);
         const result = isUrlOk(url);
         assert.isOk(result);
       });
