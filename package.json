@@ -7,7 +7,9 @@
     "dev": "nodemon app.js",
     "start": "node app.js",
     "test": "jest",
-    "test-watch": "jest --watch",
+    "test:w": "jest --watch",
+    "test:c": "jest --coverage",
+    "test:i": "hermione",
     "lint": "eslint ."
   },
   "repository": {
@@ -39,14 +41,7 @@
     "hermione": "^0.65.2",
     "jest": "^22.4.2"
   },
-  "keywords": [
-    "docker",
-    "travis",
-    "heroku",
-    "ci",
-    "cd",
-    "node.js"
-  ],
+  "keywords": ["docker", "travis", "heroku", "ci", "cd", "node.js"],
   "author": "Viktor Voronin",
   "license": "ISC",
   "bugs": {
