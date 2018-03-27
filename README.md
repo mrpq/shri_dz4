@@ -1,5 +1,14 @@
 [Demo](http://shri-dz4-prod.herokuapp.com/)
 
+Для запуска приложения:
+```
+git clone https://github.com/mrpq/shri_dz4.git
+git clone --mirror https://github.com/mrpq/shri_dz4.git repos/demo
+npm install
+npm run start
+http://localhost:3000
+```
+
 # Инфраструктура
 
 ## Часть 1 - Проверка кода
